@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F8681B4F-163D-46DC-AB07-D1133919CCC6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Vanilla_2.0</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9BA0E7D5-2009-43B1-9328-9922922DDBFB</key>
+		<string>https://github.com/opop369a/Vanilla2.0.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Vanilla_2.0.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9BA0E7D5-2009-43B1-9328-9922922DDBFB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/opop369a/Vanilla2.0.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9BA0E7D5-2009-43B1-9328-9922922DDBFB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9BA0E7D5-2009-43B1-9328-9922922DDBFB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Vanilla2</string>
+		</dict>
+	</array>
+</dict>
+</plist>
