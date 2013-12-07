@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TravelManageController : UIViewController
+@interface TravelManageController : UITableViewController
 
 @end
