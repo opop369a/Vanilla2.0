@@ -4,23 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Vanilla View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="VanillaViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eXe-u9-jDp"/>
-                        <viewControllerLayoutGuide type="bottom" id="hii-Pj-Fuj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Home View Controller - 主页-->
         <scene sceneID="32w-9l-dqg">
             <objects>
@@ -40,10 +23,11 @@
             </objects>
             <point key="canvasLocation" x="534" y="617"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Vanilla View Controller-->
         <scene sceneID="PqX-tN-Tkn">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="xcZ-8I-y3e" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bYM-rQ-XBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController definesPresentationContext="YES" id="xcZ-8I-y3e" customClass="VanillaViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Jkm-I6-kgE">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -56,7 +40,6 @@
                         <segue destination="DAJ-Bz-DNt" kind="relationship" relationship="viewControllers" id="6zV-GW-Ur4"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bYM-rQ-XBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="943"/>
         </scene>
