@@ -21,9 +21,36 @@
 		39AA1058185307C5004D8A44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AA103A185307C5004D8A44 /* UIKit.framework */; };
 		39AA1060185307C5004D8A44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39AA105E185307C5004D8A44 /* InfoPlist.strings */; };
 		39AA1062185307C5004D8A44 /* Vanilla_2_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA1061185307C5004D8A44 /* Vanilla_2_0Tests.m */; };
-		39AA106D1853081F004D8A44 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA106C1853081F004D8A44 /* HomeViewController.m */; };
-		39AA10701853085C004D8A44 /* TravelManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA106F1853085C004D8A44 /* TravelManageController.m */; };
-		39AA107318530928004D8A44 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA107218530928004D8A44 /* ProfileViewController.m */; };
+		39AA10701853085C004D8A44 /* TravelPieceManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA106F1853085C004D8A44 /* TravelPieceManageController.m */; };
+		8A23E26D185A0FEC00945CD0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E26C185A0FEC00945CD0 /* MainViewController.m */; };
+		8A23E270185A101800945CD0 /* TravelManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E26F185A101800945CD0 /* TravelManageViewController.m */; };
+		8A23E273185A14A700945CD0 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E272185A14A700945CD0 /* ProfileViewController.m */; };
+		8A23E276185A14D000945CD0 /* addTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E275185A14D000945CD0 /* addTravelViewController.m */; };
+		8A23E279185A154000945CD0 /* addTravelViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E278185A154000945CD0 /* addTravelViewDelegate.m */; };
+		8A23E281185A156C00945CD0 /* 北京.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E27A185A156C00945CD0 /* 北京.jpg */; };
+		8A23E282185A156C00945CD0 /* 北京.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E27B185A156C00945CD0 /* 北京.png */; };
+		8A23E283185A156C00945CD0 /* 丽江.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E27C185A156C00945CD0 /* 丽江.jpg */; };
+		8A23E284185A156C00945CD0 /* 丽江.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E27D185A156C00945CD0 /* 丽江.png */; };
+		8A23E285185A156C00945CD0 /* 头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E27E185A156C00945CD0 /* 头像.png */; };
+		8A23E286185A156C00945CD0 /* 西藏.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E27F185A156C00945CD0 /* 西藏.jpg */; };
+		8A23E287185A156C00945CD0 /* 西藏.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E280185A156C00945CD0 /* 西藏.png */; };
+		8A23E28A185A15A200945CD0 /* RecentTravelPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E288185A15A200945CD0 /* RecentTravelPlist.plist */; };
+		8A23E28B185A15A200945CD0 /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E289185A15A200945CD0 /* userInfo.plist */; };
+		8A3440C518535B2200E3B481 /* TravelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3440C418535B2200E3B481 /* TravelItem.m */; };
+		8A3440CE185364CC00E3B481 /* a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A3440C7185364CC00E3B481 /* a.jpg */; };
+		8A3440CF185364CC00E3B481 /* b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A3440C8185364CC00E3B481 /* b.jpg */; };
+		8A3440D0185364CC00E3B481 /* c.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A3440C9185364CC00E3B481 /* c.jpg */; };
+		8A3440D1185364CC00E3B481 /* d.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A3440CA185364CC00E3B481 /* d.jpg */; };
+		8A3440D2185364CC00E3B481 /* e.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A3440CB185364CC00E3B481 /* e.jpg */; };
+		8A3440D3185364CC00E3B481 /* f.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A3440CC185364CC00E3B481 /* f.jpg */; };
+		8A3440D4185364CC00E3B481 /* g.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A3440CD185364CC00E3B481 /* g.jpg */; };
+		8A3440D618540FD800E3B481 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3440D518540FD800E3B481 /* MapKit.framework */; };
+		8A3440D91854510700E3B481 /* SpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3440D81854510700E3B481 /* SpotAnnotation.m */; };
+		8A3440DB18545A0600E3B481 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3440DA18545A0600E3B481 /* CoreLocation.framework */; };
+		8A3440DE1854D6ED00E3B481 /* TravelPieceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3440DD1854D6ED00E3B481 /* TravelPieceDetailViewController.m */; };
+		8A3440E01855A96000E3B481 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3440DF1855A96000E3B481 /* CoreData.framework */; };
+		8A3440E31855A97A00E3B481 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A3440E11855A97A00E3B481 /* DataModel.xcdatamodeld */; };
+		E3848904AF1149119139CC33 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B3128F2C734CA483EC61E8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09B3128F2C734CA483EC61E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AA1033185307C5004D8A44 /* Vanilla_2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vanilla_2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AA1036185307C5004D8A44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		39AA1038185307C5004D8A44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,12 +84,45 @@
 		39AA105D185307C5004D8A44 /* Vanilla_2.0Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Vanilla_2.0Tests-Info.plist"; sourceTree = "<group>"; };
 		39AA105F185307C5004D8A44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39AA1061185307C5004D8A44 /* Vanilla_2_0Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vanilla_2_0Tests.m; sourceTree = "<group>"; };
-		39AA106B1853081F004D8A44 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		39AA106C1853081F004D8A44 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		39AA106E1853085C004D8A44 /* TravelManageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelManageController.h; sourceTree = "<group>"; };
-		39AA106F1853085C004D8A44 /* TravelManageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelManageController.m; sourceTree = "<group>"; };
-		39AA107118530928004D8A44 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		39AA107218530928004D8A44 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		39AA106E1853085C004D8A44 /* TravelPieceManageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelPieceManageController.h; sourceTree = "<group>"; };
+		39AA106F1853085C004D8A44 /* TravelPieceManageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelPieceManageController.m; sourceTree = "<group>"; };
+		8A23E26B185A0FEC00945CD0 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8A23E26C185A0FEC00945CD0 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8A23E26E185A101800945CD0 /* TravelManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelManageViewController.h; sourceTree = "<group>"; };
+		8A23E26F185A101800945CD0 /* TravelManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelManageViewController.m; sourceTree = "<group>"; };
+		8A23E271185A14A700945CD0 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		8A23E272185A14A700945CD0 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		8A23E274185A14D000945CD0 /* addTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addTravelViewController.h; sourceTree = "<group>"; };
+		8A23E275185A14D000945CD0 /* addTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addTravelViewController.m; sourceTree = "<group>"; };
+		8A23E277185A154000945CD0 /* addTravelViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addTravelViewDelegate.h; sourceTree = "<group>"; };
+		8A23E278185A154000945CD0 /* addTravelViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addTravelViewDelegate.m; sourceTree = "<group>"; };
+		8A23E27A185A156C00945CD0 /* 北京.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "北京.jpg"; sourceTree = "<group>"; };
+		8A23E27B185A156C00945CD0 /* 北京.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "北京.png"; sourceTree = "<group>"; };
+		8A23E27C185A156C00945CD0 /* 丽江.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "丽江.jpg"; sourceTree = "<group>"; };
+		8A23E27D185A156C00945CD0 /* 丽江.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "丽江.png"; sourceTree = "<group>"; };
+		8A23E27E185A156C00945CD0 /* 头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像.png"; sourceTree = "<group>"; };
+		8A23E27F185A156C00945CD0 /* 西藏.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "西藏.jpg"; sourceTree = "<group>"; };
+		8A23E280185A156C00945CD0 /* 西藏.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "西藏.png"; sourceTree = "<group>"; };
+		8A23E288185A15A200945CD0 /* RecentTravelPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RecentTravelPlist.plist; sourceTree = "<group>"; };
+		8A23E289185A15A200945CD0 /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
+		8A3440C318535B2200E3B481 /* TravelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelItem.h; sourceTree = "<group>"; };
+		8A3440C418535B2200E3B481 /* TravelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelItem.m; sourceTree = "<group>"; };
+		8A3440C7185364CC00E3B481 /* a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a.jpg; sourceTree = "<group>"; };
+		8A3440C8185364CC00E3B481 /* b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = b.jpg; sourceTree = "<group>"; };
+		8A3440C9185364CC00E3B481 /* c.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = c.jpg; sourceTree = "<group>"; };
+		8A3440CA185364CC00E3B481 /* d.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = d.jpg; sourceTree = "<group>"; };
+		8A3440CB185364CC00E3B481 /* e.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = e.jpg; sourceTree = "<group>"; };
+		8A3440CC185364CC00E3B481 /* f.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = f.jpg; sourceTree = "<group>"; };
+		8A3440CD185364CC00E3B481 /* g.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = g.jpg; sourceTree = "<group>"; };
+		8A3440D518540FD800E3B481 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8A3440D71854510700E3B481 /* SpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotAnnotation.h; sourceTree = "<group>"; };
+		8A3440D81854510700E3B481 /* SpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotAnnotation.m; sourceTree = "<group>"; };
+		8A3440DA18545A0600E3B481 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8A3440DC1854D6ED00E3B481 /* TravelPieceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelPieceDetailViewController.h; sourceTree = "<group>"; };
+		8A3440DD1854D6ED00E3B481 /* TravelPieceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelPieceDetailViewController.m; sourceTree = "<group>"; };
+		8A3440DF1855A96000E3B481 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8A3440E21855A97A00E3B481 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F111F1C02CD347CFAE7628F7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +130,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3440E01855A96000E3B481 /* CoreData.framework in Frameworks */,
+				8A3440DB18545A0600E3B481 /* CoreLocation.framework in Frameworks */,
 				39AA1039185307C5004D8A44 /* CoreGraphics.framework in Frameworks */,
 				39AA103B185307C5004D8A44 /* UIKit.framework in Frameworks */,
+				8A3440D618540FD800E3B481 /* MapKit.framework in Frameworks */,
 				39AA1037185307C5004D8A44 /* Foundation.framework in Frameworks */,
+				E3848904AF1149119139CC33 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +160,7 @@
 				39AA105B185307C5004D8A44 /* Vanilla_2.0Tests */,
 				39AA1035185307C5004D8A44 /* Frameworks */,
 				39AA1034185307C5004D8A44 /* Products */,
+				F111F1C02CD347CFAE7628F7 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,10 +176,14 @@
 		39AA1035185307C5004D8A44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A3440DF1855A96000E3B481 /* CoreData.framework */,
+				8A3440DA18545A0600E3B481 /* CoreLocation.framework */,
+				8A3440D518540FD800E3B481 /* MapKit.framework */,
 				39AA1036185307C5004D8A44 /* Foundation.framework */,
 				39AA1038185307C5004D8A44 /* CoreGraphics.framework */,
 				39AA103A185307C5004D8A44 /* UIKit.framework */,
 				39AA1055185307C5004D8A44 /* XCTest.framework */,
+				09B3128F2C734CA483EC61E8 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,14 +191,24 @@
 		39AA103C185307C5004D8A44 /* Vanilla_2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				8A23E277185A154000945CD0 /* addTravelViewDelegate.h */,
+				8A23E278185A154000945CD0 /* addTravelViewDelegate.m */,
+				8A3440C61853645800E3B481 /* Image */,
 				39AA1045185307C5004D8A44 /* VanillaAppDelegate.h */,
 				39AA1046185307C5004D8A44 /* VanillaAppDelegate.m */,
 				39AA1048185307C5004D8A44 /* Main.storyboard */,
+				8A23E288185A15A200945CD0 /* RecentTravelPlist.plist */,
+				8A23E289185A15A200945CD0 /* userInfo.plist */,
 				39AA10751853094A004D8A44 /* Controller */,
 				39AA104B185307C5004D8A44 /* VanillaViewController.h */,
 				39AA104C185307C5004D8A44 /* VanillaViewController.m */,
 				39AA104E185307C5004D8A44 /* Images.xcassets */,
 				39AA103D185307C5004D8A44 /* Supporting Files */,
+				8A3440C318535B2200E3B481 /* TravelItem.h */,
+				8A3440C418535B2200E3B481 /* TravelItem.m */,
+				8A3440D71854510700E3B481 /* SpotAnnotation.h */,
+				8A3440D81854510700E3B481 /* SpotAnnotation.m */,
+				8A3440E11855A97A00E3B481 /* DataModel.xcdatamodeld */,
 			);
 			path = Vanilla_2.0;
 			sourceTree = "<group>";
@@ -165,14 +245,41 @@
 		39AA10751853094A004D8A44 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				39AA107118530928004D8A44 /* ProfileViewController.h */,
-				39AA107218530928004D8A44 /* ProfileViewController.m */,
-				39AA106E1853085C004D8A44 /* TravelManageController.h */,
-				39AA106F1853085C004D8A44 /* TravelManageController.m */,
-				39AA106B1853081F004D8A44 /* HomeViewController.h */,
-				39AA106C1853081F004D8A44 /* HomeViewController.m */,
+				8A23E274185A14D000945CD0 /* addTravelViewController.h */,
+				8A23E275185A14D000945CD0 /* addTravelViewController.m */,
+				8A23E271185A14A700945CD0 /* ProfileViewController.h */,
+				8A23E272185A14A700945CD0 /* ProfileViewController.m */,
+				8A23E26E185A101800945CD0 /* TravelManageViewController.h */,
+				8A23E26F185A101800945CD0 /* TravelManageViewController.m */,
+				8A23E26B185A0FEC00945CD0 /* MainViewController.h */,
+				8A23E26C185A0FEC00945CD0 /* MainViewController.m */,
+				39AA106E1853085C004D8A44 /* TravelPieceManageController.h */,
+				39AA106F1853085C004D8A44 /* TravelPieceManageController.m */,
+				8A3440DC1854D6ED00E3B481 /* TravelPieceDetailViewController.h */,
+				8A3440DD1854D6ED00E3B481 /* TravelPieceDetailViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		8A3440C61853645800E3B481 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				8A23E27A185A156C00945CD0 /* 北京.jpg */,
+				8A23E27B185A156C00945CD0 /* 北京.png */,
+				8A23E27C185A156C00945CD0 /* 丽江.jpg */,
+				8A23E27D185A156C00945CD0 /* 丽江.png */,
+				8A23E27E185A156C00945CD0 /* 头像.png */,
+				8A23E27F185A156C00945CD0 /* 西藏.jpg */,
+				8A23E280185A156C00945CD0 /* 西藏.png */,
+				8A3440C7185364CC00E3B481 /* a.jpg */,
+				8A3440C8185364CC00E3B481 /* b.jpg */,
+				8A3440C9185364CC00E3B481 /* c.jpg */,
+				8A3440CA185364CC00E3B481 /* d.jpg */,
+				8A3440CB185364CC00E3B481 /* e.jpg */,
+				8A3440CC185364CC00E3B481 /* f.jpg */,
+				8A3440CD185364CC00E3B481 /* g.jpg */,
+			);
+			name = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +289,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39AA1065185307C5004D8A44 /* Build configuration list for PBXNativeTarget "Vanilla_2.0" */;
 			buildPhases = (
+				23295C18DE274EBB942FAB77 /* Check Pods Manifest.lock */,
 				39AA102F185307C5004D8A44 /* Sources */,
 				39AA1030185307C5004D8A44 /* Frameworks */,
 				39AA1031185307C5004D8A44 /* Resources */,
+				839AE41524EC409ABD4691EC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,6 +332,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "HY Bao";
 				TargetAttributes = {
+					39AA1032185307C5004D8A44 = {
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					39AA1053185307C5004D8A44 = {
 						TestTargetID = 39AA1032185307C5004D8A44;
 					};
@@ -252,8 +368,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A23E283185A156C00945CD0 /* 丽江.jpg in Resources */,
+				8A23E281185A156C00945CD0 /* 北京.jpg in Resources */,
+				8A3440CF185364CC00E3B481 /* b.jpg in Resources */,
+				8A3440CE185364CC00E3B481 /* a.jpg in Resources */,
+				8A3440D3185364CC00E3B481 /* f.jpg in Resources */,
+				8A23E284185A156C00945CD0 /* 丽江.png in Resources */,
+				8A23E282185A156C00945CD0 /* 北京.png in Resources */,
+				8A23E285185A156C00945CD0 /* 头像.png in Resources */,
+				8A3440D4185364CC00E3B481 /* g.jpg in Resources */,
+				8A23E286185A156C00945CD0 /* 西藏.jpg in Resources */,
 				39AA104F185307C5004D8A44 /* Images.xcassets in Resources */,
+				8A23E28B185A15A200945CD0 /* userInfo.plist in Resources */,
+				8A3440D2185364CC00E3B481 /* e.jpg in Resources */,
+				8A23E28A185A15A200945CD0 /* RecentTravelPlist.plist in Resources */,
 				39AA1041185307C5004D8A44 /* InfoPlist.strings in Resources */,
+				8A23E287185A156C00945CD0 /* 西藏.png in Resources */,
+				8A3440D1185364CC00E3B481 /* d.jpg in Resources */,
+				8A3440D0185364CC00E3B481 /* c.jpg in Resources */,
 				39AA104A185307C5004D8A44 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,17 +400,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23295C18DE274EBB942FAB77 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		839AE41524EC409ABD4691EC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		39AA102F185307C5004D8A44 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39AA10701853085C004D8A44 /* TravelManageController.m in Sources */,
+				8A3440C518535B2200E3B481 /* TravelItem.m in Sources */,
+				8A3440E31855A97A00E3B481 /* DataModel.xcdatamodeld in Sources */,
+				8A23E26D185A0FEC00945CD0 /* MainViewController.m in Sources */,
+				8A23E279185A154000945CD0 /* addTravelViewDelegate.m in Sources */,
+				39AA10701853085C004D8A44 /* TravelPieceManageController.m in Sources */,
 				39AA1047185307C5004D8A44 /* VanillaAppDelegate.m in Sources */,
 				39AA1043185307C5004D8A44 /* main.m in Sources */,
+				8A3440D91854510700E3B481 /* SpotAnnotation.m in Sources */,
+				8A3440DE1854D6ED00E3B481 /* TravelPieceDetailViewController.m in Sources */,
+				8A23E270185A101800945CD0 /* TravelManageViewController.m in Sources */,
+				8A23E276185A14D000945CD0 /* addTravelViewController.m in Sources */,
+				8A23E273185A14A700945CD0 /* ProfileViewController.m in Sources */,
 				39AA104D185307C5004D8A44 /* VanillaViewController.m in Sources */,
-				39AA107318530928004D8A44 /* ProfileViewController.m in Sources */,
-				39AA106D1853081F004D8A44 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +574,7 @@
 		};
 		39AA1066185307C5004D8A44 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F111F1C02CD347CFAE7628F7 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -415,6 +588,7 @@
 		};
 		39AA1067185307C5004D8A44 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F111F1C02CD347CFAE7628F7 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -487,6 +661,7 @@
 				39AA1067185307C5004D8A44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39AA1068185307C5004D8A44 /* Build configuration list for PBXNativeTarget "Vanilla_2.0Tests" */ = {
 			isa = XCConfigurationList;
@@ -495,8 +670,22 @@
 				39AA106A185307C5004D8A44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8A3440E11855A97A00E3B481 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A3440E21855A97A00E3B481 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 8A3440E21855A97A00E3B481 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 39AA102B185307C5004D8A44 /* Project object */;
 }

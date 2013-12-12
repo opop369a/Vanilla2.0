@@ -1,0 +1,1 @@
+../../QBImagePickerController/QBImagePickerController/Classes/QBImagePickerGroupCell.h

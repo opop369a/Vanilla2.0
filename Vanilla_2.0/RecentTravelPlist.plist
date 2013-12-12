@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>imageKey</key>
+		<string>丽江</string>
+		<key>descKey</key>
+		<string>这次旅行很有收获</string>
+		<key>nameKey</key>
+		<string>国庆丽江之行</string>
+	</dict>
+	<dict>
+		<key>imageKey</key>
+		<string>丽江</string>
+		<key>descKey</key>
+		<string>这次旅行很有收获</string>
+		<key>nameKey</key>
+		<string>国庆丽江之行</string>
+	</dict>
+	<dict>
+		<key>imageKey</key>
+		<string>丽江</string>
+		<key>descKey</key>
+		<string>这次旅行很有收获</string>
+		<key>nameKey</key>
+		<string>国庆丽江之行</string>
+	</dict>
+	<dict>
+		<key>imageKey</key>
+		<string>丽江</string>
+		<key>descKey</key>
+		<string>这次旅行很有收获</string>
+		<key>nameKey</key>
+		<string>国庆丽江之行</string>
+	</dict>
+	<dict>
+		<key>imageKey</key>
+		<string>丽江</string>
+		<key>descKey</key>
+		<string>这次旅行很有收获</string>
+		<key>nameKey</key>
+		<string>国庆丽江之行</string>
+	</dict>
+	<dict>
+		<key>imageKey</key>
+		<string>北京</string>
+		<key>descKey</key>
+		<string>在帝都的pm2.5当中浸润了5天！</string>
+		<key>nameKey</key>
+		<string>寒假北京之行</string>
+	</dict>
+	<dict>
+		<key>imageKey</key>
+		<string>丽江</string>
+		<key>descKey</key>
+		<string>这次旅行很有收获</string>
+		<key>nameKey</key>
+		<string>国庆丽江之行</string>
+	</dict>
+</array>
+</plist>
