@@ -227,9 +227,11 @@
         <scene sceneID="lDq-Jh-7ql">
             <objects>
                 <navigationController definesPresentationContext="YES" id="N6R-s1-xj6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="主页" id="2Na-bB-PCU"/>
+                    <tabBarItem key="tabBarItem" title="主页" image="Home.png" id="2Na-bB-PCU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F46-y2-AvA">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="3O3-1S-cHJ" kind="relationship" relationship="rootViewController" id="URL-a8-P3C"/>
@@ -239,7 +241,7 @@
             </objects>
             <point key="canvasLocation" x="424" y="-199"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Main View Controller - 主页-->
         <scene sceneID="jOV-gm-jfD">
             <objects>
                 <viewController id="3O3-1S-cHJ" customClass="MainViewController" sceneMemberID="viewController">
@@ -248,7 +250,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="w5s-9m-hR6"/>
+                    <navigationItem key="navigationItem" title="主页" id="w5s-9m-hR6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hp-xz-a2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -293,9 +295,11 @@
         <scene sceneID="v70-jC-2fK">
             <objects>
                 <navigationController definesPresentationContext="YES" id="arJ-5E-Ioj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="旅行管理" id="WHq-rS-f8K"/>
+                    <tabBarItem key="tabBarItem" title="旅行管理" image="box.png" id="WHq-rS-f8K"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6ZX-Mq-9bm">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="DZL-z6-Gv4" kind="relationship" relationship="rootViewController" id="PE2-HZ-rX2"/>
@@ -309,9 +313,10 @@
         <scene sceneID="cn7-1Y-oaL">
             <objects>
                 <navigationController definesPresentationContext="YES" id="nf6-Sl-8wj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人" id="U3B-BI-4c2"/>
+                    <tabBarItem key="tabBarItem" title="个人" image="user.png" id="U3B-BI-4c2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ed8-U7-Ast">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="5eC-Li-e1z" kind="relationship" relationship="rootViewController" id="xQQ-6f-fMn"/>
@@ -334,7 +339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8E9-3H-jXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="1391"/>
+            <point key="canvasLocation" x="705" y="1551"/>
         </scene>
         <!--Travel Manage View Controller - 旅行管理-->
         <scene sceneID="dlm-Wu-OZT">
@@ -439,6 +444,11 @@
             <point key="canvasLocation" x="2374" y="657"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Home.png" width="23" height="21"/>
+        <image name="box.png" width="20" height="21"/>
+        <image name="user.png" width="17" height="21"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
