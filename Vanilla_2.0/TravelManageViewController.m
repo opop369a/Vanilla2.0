@@ -207,9 +207,9 @@ static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return 100;
-    }
+//    if (section == 1) {
+//        return 100;
+//    }
     return 0;
 }
 
@@ -229,16 +229,18 @@ static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
     addViewController.delegate = self; 
     }else if([segue.identifier isEqualToString:@"travelPiece"]){
     TravelPieceManageController *mcontroller = segue.destinationViewController;
+        mcontroller.delegate = self;
         NSNumber * num = (NSNumber *)[(NSDictionary*)sender objectForKey:@"tid"];
         mcontroller.tid = [num integerValue];
+        NSLog(@"%@" , self.content);
     }
     
 }
 
 -(void) done:(NSMutableDictionary *)dictionary
 {
-    [self addRecord:dictionary];
     [self.content addObject:dictionary];
+    [self addRecord:dictionary];
     [_tableView reloadData];
 }
 
@@ -290,7 +292,9 @@ static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
         NSString*result = [dic objectForKey:@"result"];
         if ([result isEqualToString:@"success"]) {
             NSString*tid = [dic objectForKey:@"tid"];
-            [record setObject:tid forKey:@"tid"];
+            NSLog(@"success %@" , tid);
+            [[self.content lastObject] setObject:tid forKey:@"tid"];
+//            [record setObject:tid forKey:@"tid"];
         }
         else
         {
@@ -299,6 +303,29 @@ static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+}
+
+-(void)TravelPieceManageViewControllerUpdateData:(TravelPieceManageController *)controller
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"username": @"tangwei"};
+    [manager POST:[baseUrl stringByAppendingString:@"recenttravels.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        NSArray *array = [dic objectForKey:@"travels"];
+        //            [self.content addObjectsFromArray:array];
+        self.content = [array mutableCopy];
+        NSLog(@"%@" ,dic );
+        [_tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"xxxError: %@", error);
+    }];
+
+    
 }
 
 

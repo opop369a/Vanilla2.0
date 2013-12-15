@@ -55,6 +55,7 @@
                     <tabBarItem key="tabBarItem" title="旅行管理" id="sDZ-TZ-88c"/>
                     <navigationItem key="navigationItem" title="旅行详情" id="kHt-Qh-QaG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qnG-Ti-4fs">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addPiece:" destination="Z01-wR-3GF" id="YcM-ba-ehv"/>
                             </connections>
@@ -77,6 +78,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Nf-y9-Vxl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -130,7 +136,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cbu-Kw-ieh">
                                                     <rect key="frame" x="-215" y="-459" width="591" height="960"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.254054927099786" green="0.78126300543098937" blue="0.87708050271739135" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.970703125" green="0.51499292143216879" blue="0.42296795366829282" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" title="图片库"/>
                                                     <connections>
@@ -140,7 +146,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4hd-Jf-AbL">
                                                     <rect key="frame" x="160" y="0.0" width="160" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.28665886822102976" green="0.8815257845081812" blue="0.98963994565217395" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                     <state key="normal" title="照相机"/>
                                                     <connections>
@@ -201,12 +207,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="添加记录" id="wBM-Zs-5g4">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ae4-kz-U7c">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="Ae4-kz-U7c">
                             <connections>
                                 <action selector="cancel:" destination="Jzx-U0-Hb4" id="kBW-u6-t6q"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hiw-2W-KoP">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="hiw-2W-KoP">
                             <connections>
                                 <action selector="done:" destination="Jzx-U0-Hb4" id="Qvk-sV-DXc"/>
                             </connections>
@@ -233,6 +239,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="3O3-1S-cHJ" kind="relationship" relationship="rootViewController" id="URL-a8-P3C"/>
@@ -263,6 +272,10 @@
                 <navigationController storyboardIdentifier="addTravel" definesPresentationContext="YES" id="cYZ-1Y-pIS" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jiR-kg-ftc">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="qzi-RG-QbW" kind="relationship" relationship="rootViewController" id="ITh-EG-O08"/>
@@ -300,7 +313,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6ZX-Mq-9bm">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="DZL-z6-Gv4" kind="relationship" relationship="rootViewController" id="PE2-HZ-rX2"/>
@@ -318,6 +335,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ed8-U7-Ast">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.81960784310000001" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="5eC-Li-e1z" kind="relationship" relationship="rootViewController" id="xQQ-6f-fMn"/>
@@ -327,7 +347,7 @@
             </objects>
             <point key="canvasLocation" x="56" y="1296"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile View Controller - 个人-->
         <scene sceneID="s9I-3k-dGR">
             <objects>
                 <viewController id="5eC-Li-e1z" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -336,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0FK-me-mxs"/>
+                    <navigationItem key="navigationItem" title="个人" id="0FK-me-mxs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8E9-3H-jXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -355,7 +375,7 @@
                     <navigationItem key="navigationItem" title="旅行管理" id="UDT-Ql-XHU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="u4m-dI-SoY">
                             <connections>
-                                <segue destination="cYZ-1Y-pIS" kind="modal" identifier="addTravel" modalTransitionStyle="flipHorizontal" id="QJ3-nh-ZPg"/>
+                                <segue destination="cYZ-1Y-pIS" kind="modal" identifier="addTravel" id="QJ3-nh-ZPg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -500,12 +520,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="新增旅行" id="aUl-kN-fLq">
-                        <barButtonItem key="leftBarButtonItem" title="返回" id="asW-aG-XoL">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="asW-aG-XoL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelPressed:" destination="qzi-RG-QbW" id="0cK-AV-bLo"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="完成" id="WGQ-tN-LNU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="donePressed:" destination="qzi-RG-QbW" id="6QF-6m-dLQ"/>
                             </connections>

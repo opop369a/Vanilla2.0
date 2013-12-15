@@ -406,5 +406,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 - (void)TravelPieceDetailViewControllerUpdateData:(TravelPieceDetailViewController *)controller
 {
     [self.tableView reloadData];
+    [self.delegate TravelPieceManageViewControllerUpdateData:self];
+
 }
 @end

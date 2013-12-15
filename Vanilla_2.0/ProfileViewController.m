@@ -93,7 +93,7 @@ static NSString *const baseUrl =@"http://172.17.228.37/vanilla/";
     _imageScroller.showsHorizontalScrollIndicator   = NO;
     _imageScroller.showsVerticalScrollIndicator     = NO;
     
-    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"北京"]];
+    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"清新"]];
     
     
     [_imageScroller addSubview:_imageView];

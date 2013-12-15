@@ -264,7 +264,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePicker.delegate = self;
-        imagePicker.allowsEditing = YES;
+        imagePicker.allowsEditing = NO;
         [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
     }
 }
@@ -310,7 +310,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [images addObject:img];
     

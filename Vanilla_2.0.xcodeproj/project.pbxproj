@@ -55,6 +55,7 @@
 		8A3440DE1854D6ED00E3B481 /* TravelPieceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3440DD1854D6ED00E3B481 /* TravelPieceDetailViewController.m */; };
 		8A3440E01855A96000E3B481 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3440DF1855A96000E3B481 /* CoreData.framework */; };
 		8A3440E31855A97A00E3B481 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A3440E11855A97A00E3B481 /* DataModel.xcdatamodeld */; };
+		8A9F0F79185DF44C0015C116 /* 清新.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F0F78185DF44C0015C116 /* 清新.png */; };
 		E3848904AF1149119139CC33 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B3128F2C734CA483EC61E8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,7 @@
 		8A3440DD1854D6ED00E3B481 /* TravelPieceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelPieceDetailViewController.m; sourceTree = "<group>"; };
 		8A3440DF1855A96000E3B481 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8A3440E21855A97A00E3B481 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		8A9F0F78185DF44C0015C116 /* 清新.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "清新.png"; sourceTree = "<group>"; };
 		F111F1C02CD347CFAE7628F7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,6 +276,7 @@
 		8A3440C61853645800E3B481 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				8A9F0F78185DF44C0015C116 /* 清新.png */,
 				39E9F3A4185D379700784C12 /* default.png */,
 				39E9F3A2185D360200784C12 /* loading.png */,
 				39E9F39C185BF2C500784C12 /* box.png */,
@@ -388,6 +391,7 @@
 				8A3440CF185364CC00E3B481 /* b.jpg in Resources */,
 				8A3440CE185364CC00E3B481 /* a.jpg in Resources */,
 				8A3440D3185364CC00E3B481 /* f.jpg in Resources */,
+				8A9F0F79185DF44C0015C116 /* 清新.png in Resources */,
 				8A23E284185A156C00945CD0 /* 丽江.png in Resources */,
 				39E9F3A0185BF2C500784C12 /* Home.png in Resources */,
 				8A23E282185A156C00945CD0 /* 北京.png in Resources */,

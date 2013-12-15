@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "addTravelViewDelegate.h"
+#import "TravelPieceManageController.h"
 
-@interface TravelManageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,addTravelViewDelegate> {
+@interface TravelManageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,addTravelViewDelegate,TravelPieceManageViewControllerDelegate> {
     UIImageView     *_imageView;
     UIScrollView    *_imageScroller;
     UITableView     *_tableView;

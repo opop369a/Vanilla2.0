@@ -12,6 +12,14 @@
 #import "SpotAnnotation.h"
 #import "TravelPieceDetailViewController.h"
 
+@class TravelPieceManageController;
+
+@protocol TravelPieceManageViewControllerDelegate <NSObject>
+
+-(void)TravelPieceManageViewControllerUpdateData:(TravelPieceManageController *)controller;
+
+
+@end
 @interface TravelPieceManageController : UITableViewController <MKMapViewDelegate,
                                                            TravelPieceDetailViewControllerDelegate,
                                                            CLLocationManagerDelegate>
@@ -30,6 +38,7 @@
 }
 
 @property(nonatomic, assign) NSInteger tid;
+@property (nonatomic, weak)id<TravelPieceManageViewControllerDelegate> delegate;
 
 -(IBAction)addPiece:(id)sender;
 
