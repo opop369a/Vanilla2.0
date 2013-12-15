@@ -26,4 +26,9 @@
     SpotAnnotation *user_current_annotation;
     
 }
+
+@property(nonatomic, assign) NSInteger tid;
+
+-(IBAction)addPiece:(id)sender;
+
 @end

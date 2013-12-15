@@ -15,6 +15,11 @@
     _images = [images mutableCopy];
 }
 
+- (void)setImageURLs:(NSMutableArray *)imageURLs
+{
+    _imageURLs = [imageURLs mutableCopy];
+}
+
 - (id)initWithDate:(NSDate *)date spot:(NSString *)spot latitude:(float)latitude longitude:(float)longitude description:(NSString *)description images:(NSMutableArray *)images
 {
     if (self = [super init]) {
@@ -25,6 +30,21 @@
         self.images = images;
     }
     
+    return self;
+}
+
+- (id)initWithDateString:(NSString *)dateString spot:(NSString *)spot latitude:(float)latitude longitude:(float)longitude description:(NSString *)description imageURLs:(NSMutableArray *)imageURLs pid:(NSInteger)pid
+{
+    if (self = [super init]) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+        self.date = [formatter dateFromString:dateString];
+        self.spot = spot;
+        self.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+        self.description = description;
+        self.imageURLs = imageURLs;
+        self.pid = pid;
+    }
     return self;
 }
 

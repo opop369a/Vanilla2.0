@@ -22,6 +22,8 @@
 
 - (void)travelPieceDetailViewController:(TravelPieceDetailViewController *)controller didFinishEditingItem:(TravelItem *)item;
 
+- (void)TravelPieceDetailViewControllerUpdateData:(TravelPieceDetailViewController *)controller;
+
 @end
 
 @interface TravelPieceDetailViewController : UITableViewController
@@ -34,6 +36,9 @@
     
     BOOL hasPhoto;
     NSMutableArray *images;
+    NSMutableArray *imageURLs;
+    NSInteger pid;
+    NSArray *imageViews;
     NSInteger PhotoCount;
     NSString *description;
     
@@ -43,6 +48,7 @@
 
 @property (nonatomic, weak)id<TravelPieceDetailViewControllerDelegate> delegate;
 @property (nonatomic, strong)TravelItem *itemToEdit;
+@property (nonatomic, assign)NSInteger tid;
 
 @property (nonatomic, strong) IBOutlet UIImageView* imageView1;
 @property (nonatomic, strong) IBOutlet UIImageView* imageView2;

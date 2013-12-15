@@ -12,6 +12,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "TravelPieceDetailViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 
 static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
@@ -21,6 +22,8 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 @end
 
 @implementation TravelPieceManageController
+
+@synthesize tid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,62 +42,11 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     _mapView.delegate = self;
     [_mapView setShowsUserLocation:TRUE];
     
-    //CLLocationCoordinate2D base_coordinate = [_mapView userLocation].location.coordinate;
-    float base_latitude=32.05;
-    float base_longitude=118.78;
-    
     travelItems = [[NSMutableArray alloc] initWithCapacity:20];
     itemAnnotations = [[NSMutableArray alloc] initWithCapacity:20];
+    tid = 1;
     
-    NSMutableArray *imgs = [[NSMutableArray alloc] initWithCapacity:3];
-    
-    UIImage *img = [UIImage imageNamed:@"a.jpg"];
-    [imgs removeAllObjects];
-    [imgs addObject:img];
-    TravelItem *item = [[TravelItem alloc] initWithDate:[NSDate date] spot:@"景点1" latitude:base_latitude longitude:base_longitude+0.01 description:@"吃好吃的" images:imgs];
-    [travelItems addObject:item];
-    
-    img = [UIImage imageNamed:@"b.jpg"];
-    [imgs removeAllObjects];
-    [imgs addObject:img];
-    item = [[TravelItem alloc] initWithDate:[NSDate date] spot:@"景点2" latitude:base_latitude+0.01 longitude:base_longitude+0.01 description:@"开心啊" images:imgs];
-    [travelItems addObject:item];
-    
-    img = [UIImage imageNamed:@"c.jpg"];
-    [imgs removeAllObjects];
-    [imgs addObject:img];
-    item = [[TravelItem alloc] initWithDate:[NSDate date] spot:@"景点3" latitude:base_latitude+0.02 longitude:base_longitude+0.01 description:@"开心啊" images:imgs];
-    [travelItems addObject:item];
-    
-    img = [UIImage imageNamed:@"d.jpg"];
-    [imgs removeAllObjects];
-    [imgs addObject:img];
-    item = [[TravelItem alloc] initWithDate:[NSDate date] spot:@"景点4" latitude:base_latitude+0.01 longitude:base_longitude+0.02 description:@"还不错哦" images:imgs];
-    [travelItems addObject:item];
-    
-    img = [UIImage imageNamed:@"e.jpg"];
-    [imgs removeAllObjects];
-    [imgs addObject:img];
-    item = [[TravelItem alloc] initWithDate:[NSDate date] spot:@"景点5" latitude:base_latitude+0.02 longitude:base_longitude description:@"好玩啊" images:imgs];
-    [travelItems addObject:item];
-    
-    img = [UIImage imageNamed:@"f.jpg"];
-    [imgs removeAllObjects];
-    [imgs addObject:img];
-    item = [[TravelItem alloc] initWithDate:[NSDate date] spot:@"景点6" latitude:base_latitude-0.01 longitude:base_longitude+0.01 description:@"开心啊" images:imgs];
-    [travelItems addObject:item];
-    
-    img = [UIImage imageNamed:@"g.jpg"];
-    [imgs removeAllObjects];
-    [imgs addObject:img];
-    item = [[TravelItem alloc] initWithDate:[NSDate date] spot:@"景点7" latitude:base_latitude-0.01 longitude:base_longitude description:@"赞啊" images:imgs];
-    [travelItems addObject:item];
-    
-    img = nil;
-    imgs = nil;
-    
-    [self addAnnotations];
-    [_mapView addOverlay:[self makePolylineWithLocations:travelItems]];
+    [self getPiecesFromServer:tid];
     
 }
 
@@ -104,13 +56,59 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)addPiece:(id)sender
+{
+    if (user_spot) {
+        [self performSegueWithIdentifier:@"addPiece" sender:nil];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"当前尚未获得用户地理位置，请检查网络连接，稍后再试哦=。=" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+
+}
+
 #pragma -mark AFNetworking
 
-- (void)getDataFromServer
+- (void)getPiecesFromServer:(NSInteger)travelid
 {
-//    NSString *piecesURL = [NSString stringWithFormat:@"%@test.php", BaseURL];
-//    NSURL *url = [NSURL URLWithString:piecesURL];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:BaseURL]];
+    NSDictionary *parameters = @{@"tid":@1};
+    [manager POST:@"getPieces.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSLog(@"Success: %@", operation.responseString);
+        
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        //系统自带JSON解析
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        //NSLog(@"%@", resultDic);
+        NSArray *pieces = [resultDic objectForKey:@"pieces"];
+        for (NSDictionary *pdict in pieces) {
+            //NSLog(@"%@", pdict);
+            NSString *s_date = [pdict objectForKey:@"date"];
+            NSString *spot = [pdict objectForKey:@"spot"];
+            NSString *description = [pdict objectForKey:@"description"];
+            NSMutableArray *images = [pdict objectForKey:@"images"];
+            float latitude =[(NSNumber *)[pdict objectForKey:@"latitude"] floatValue];
+            float longitude =[(NSNumber *)[pdict objectForKey:@"longitude"] floatValue];
+            NSInteger pid = [[pdict objectForKey:@"pid"] integerValue];
+            NSLog(@"date:%@", s_date);
+            NSLog(@"spot:%@", spot);
+            NSLog(@"description:%@", description);
+            NSLog(@"latitude:%f", latitude);
+            NSLog(@"longitude:%f", longitude);
+            NSLog(@"images:%@", images);
+            NSLog(@"pid:%ld", (long)pid);
+            TravelItem *item = [[TravelItem alloc]initWithDateString:s_date spot:spot latitude:latitude longitude:longitude description:description imageURLs:images pid:pid];
+            [travelItems addObject:item];
+        }
+        [self addAnnotations];
+        [_mapView addOverlay:[self makePolylineWithLocations:travelItems]];
+        [self.tableView reloadData];
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 
@@ -134,16 +132,18 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     
         TravelItem *item = [travelItems objectAtIndex:indexPath.row-1];
         NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"YYYY-MM-dd"];
+        [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm"];
         datelabel.text = [dateFormatter stringFromDate:item.date];
         spotLabel.text = item.spot;
         descriptionLabel.text = item.description;
-        if ([item.images count]>0) {
-            imageView.image = [item.images objectAtIndex:0];
+        if ([item.imageURLs count]>0) {
+            NSString *imgstr = [BaseURL stringByAppendingString:[item.imageURLs objectAtIndex:0]];
+            NSURL *imgurl = [[NSURL alloc] initWithString:imgstr];
+            [imageView setImageWithURL:imgurl];
         }else{
             imageView.image = nil;
         }
-            
+        
         return cell;
     }
 }
@@ -312,11 +312,13 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
         
         travelPieceDetail.spot = user_spot;
         travelPieceDetail.coordinate = user_location;
+        travelPieceDetail.tid = tid;
         travelPieceDetail.delegate = self;
     }else if ([segue.identifier isEqualToString:@"editPiece"]) {
         UINavigationController *navi = segue.destinationViewController;
         TravelPieceDetailViewController *travelPieceDetail = (TravelPieceDetailViewController *)navi.topViewController;
         
+        travelPieceDetail.tid = tid;
         travelPieceDetail.delegate = self;
         travelPieceDetail.itemToEdit = sender;
     }
@@ -354,5 +356,10 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 - (void)travelPieceDetailViewControllerDidCancel:(TravelPieceDetailViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)TravelPieceDetailViewControllerUpdateData:(TravelPieceDetailViewController *)controller
+{
+    [self.tableView reloadData];
 }
 @end
