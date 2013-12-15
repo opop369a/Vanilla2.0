@@ -65,6 +65,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     
     if (itemToEdit != nil) {
         self.title = @"编辑记录";
+        NSLog(@"%@", itemToEdit.imageURLs);
         self.coordinate = itemToEdit.coordinate;
         self.spot = itemToEdit.spot;
         imageURLs = itemToEdit.imageURLs;
@@ -162,9 +163,16 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     [manager POST:@"newPiece.php" parameters:parameters success:
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSLog(@"%@", [operation responseString]);
-         TravelItem *item = [[TravelItem alloc] initWithDateString:dateString spot:spot latitude:coordinate.latitude longitude:coordinate.longitude description:description imageURLs:imageURLs pid:pid];
+         NSString *requestTmp = [NSString stringWithString:operation.responseString];
+         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+         //系统自带JSON解析
+         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+         NSNumber *o_pid = [resultDic objectForKey:@"pid"];
+         pid = [o_pid integerValue];
          
          [self uploadImagesToServer];
+         
+         TravelItem *item = [[TravelItem alloc] initWithDateString:dateString spot:spot latitude:coordinate.latitude longitude:coordinate.longitude description:description imageURLs:imageURLs pid:pid];
          
          [self.delegate travelPieceDetailViewController:self didFinishAddingItem:item];
 

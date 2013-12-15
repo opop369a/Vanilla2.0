@@ -52,6 +52,8 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     travelItems = [[NSMutableArray alloc] initWithCapacity:20];
     itemAnnotations = [[NSMutableArray alloc] initWithCapacity:20];
     
+    NSLog(@"tid:%d", tid);
+    
     [self getPiecesFromServer:tid];
     
 }
@@ -78,7 +80,9 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 - (void)getPiecesFromServer:(NSInteger)travelid
 {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:BaseURL]];
-    NSDictionary *parameters = @{@"tid":@1};
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSNumber *o_tid = [[NSNumber alloc]initWithInteger:travelid];
+    NSDictionary *parameters = @{@"tid":o_tid};
     [manager POST:@"getPieces.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
         NSLog(@"Success: %@", operation.responseString);
@@ -87,7 +91,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
-        //NSLog(@"%@", resultDic);
+        //NSLog(@"resultDic:%@", resultDic);
         NSArray *pieces = [resultDic objectForKey:@"pieces"];
         for (NSDictionary *pdict in pieces) {
             //NSLog(@"%@", pdict);
@@ -113,6 +117,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
         [self.tableView reloadData];
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", [operation responseString]);
         NSLog(@"Error: %@", error);
     }];
 }

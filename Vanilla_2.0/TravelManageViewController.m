@@ -19,7 +19,7 @@
 @implementation TravelManageViewController
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
-static NSString *const baseUrl =@"http://localhost/~BAO/";
+static NSString *const baseUrl =@"http://172.17.228.37/vanilla/";
 static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -229,7 +229,8 @@ static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
     addViewController.delegate = self; 
     }else if([segue.identifier isEqualToString:@"travelPiece"]){
     TravelPieceManageController *mcontroller = segue.destinationViewController;
-        mcontroller.tid = [(NSDictionary*)sender objectForKey:@"tid"];
+        NSNumber * num = (NSNumber *)[(NSDictionary*)sender objectForKey:@"tid"];
+        mcontroller.tid = [num integerValue];
     }
     
 }

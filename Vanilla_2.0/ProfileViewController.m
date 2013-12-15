@@ -15,7 +15,7 @@
 }
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
-static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
+static NSString *const baseUrl =@"http://172.17.228.37/vanilla/";
 #pragma mark - Parallax effect
 
 - (void)viewDidLoad
