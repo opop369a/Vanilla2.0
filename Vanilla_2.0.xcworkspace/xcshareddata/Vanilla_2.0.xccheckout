@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>60ABF124-84B6-4057-9DF2-1B91AAC8B94C</string>
+	<string>0B2110B2-5347-4B7B-9C4B-7201A55142C6</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Vanilla_2.0</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -19,8 +19,6 @@
 	<dict>
 		<key>9BA0E7D5-2009-43B1-9328-9922922DDBFB</key>
 		<string>..</string>
-		<key>DA2B6266-280D-484F-AC40-7269A85F205D</key>
-		<string>../../../Downloads/Vanilla3.0</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/opop369a/Vanilla2.0.git</string>
@@ -37,14 +35,6 @@
 			<string>9BA0E7D5-2009-43B1-9328-9922922DDBFB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Vanilla2</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DA2B6266-280D-484F-AC40-7269A85F205D</string>
-			<key>IDESourceControlWCCName</key>
-			<string>Vanilla3</string>
 		</dict>
 	</array>
 </dict>
