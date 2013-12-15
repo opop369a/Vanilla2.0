@@ -22,7 +22,7 @@
 
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
-static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
+static NSString *const baseUrl =@"http://172.17.228.37/vanilla/";
 static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
 
 
@@ -341,7 +341,12 @@ static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
 {
     add =[self.storyboard instantiateViewControllerWithIdentifier:@"addTravel"];
     addTravelViewController *addt =(addTravelViewController*) [add topViewController];
-    addt.delegate = self;
+    [self.navigationController.parentViewController.childViewControllers objectAtIndex:1] ;
+    UINavigationController *nav = [self.navigationController.parentViewController.childViewControllers objectAtIndex:1];
+    addt.delegate = [nav.viewControllers objectAtIndex:0];
+    NSLog(@"%@" ,addt.delegate);
+//    NSLog(@"%@" ,[self.navigationController.parentViewController.childViewControllers objectAtIndex:1]. );
+    
     [self.navigationController presentViewController:add animated:YES completion:nil];
 }
 
