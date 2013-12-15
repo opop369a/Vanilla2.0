@@ -56,17 +56,18 @@
                     <navigationItem key="navigationItem" title="旅行详情" id="kHt-Qh-QaG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qnG-Ti-4fs">
                             <connections>
-                                <segue destination="mgZ-aL-gLd" kind="modal" identifier="addPiece" id="htB-dE-Tfm"/>
+                                <action selector="addPiece:" destination="Z01-wR-3GF" id="YcM-ba-ehv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="mgZ-aL-gLd" kind="modal" identifier="editPiece" id="gJp-Z1-9iP"/>
+                        <segue destination="mgZ-aL-gLd" kind="modal" identifier="addPiece" id="vmm-Om-rfa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2P8-ZN-xfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1456" y="1412"/>
+            <point key="canvasLocation" x="1404" y="1408"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Da-bK-dCM">
@@ -533,6 +534,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gJp-Z1-9iP"/>
+        <segue reference="vmm-Om-rfa"/>
     </inferredMetricsTieBreakers>
 </document>

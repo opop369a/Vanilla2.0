@@ -11,12 +11,16 @@
 
 @interface TravelItem : NSObject
 
+@property(nonatomic, assign) NSInteger pid;
 @property(nonatomic, copy) NSDate *date;
 @property(nonatomic, copy) NSString *spot;
 @property(nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property(nonatomic, copy) NSString *description;
 @property(nonatomic, copy) NSMutableArray *images;
+@property(nonatomic, copy) NSMutableArray *imageURLs;
 
 - (id)initWithDate:(NSDate *)date spot:(NSString *)spot latitude:(float)latitude longitude:(float)longitude description:(NSString *)description images:(NSMutableArray *)images;
+
+- (id)initWithDateString:(NSString *)dateString spot:(NSString *)spot latitude:(float)latitude longitude:(float)longitude description:(NSString *)description imageURLs:(NSMutableArray *)imageURLs pid:(NSInteger)pid;
 
 @end
