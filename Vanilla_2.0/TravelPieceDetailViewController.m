@@ -213,7 +213,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
         //self.itemToEdit.description = self.descriptionView.text;
         description = self.descriptionView.text;
         
-        if (description != self.itemToEdit.description) {
+        if (![description isEqualToString:self.itemToEdit.description]) {
             self.itemToEdit.description = description;
             
             [self editPieceToServerWithDescription:description Pieceid:pid];
@@ -295,6 +295,11 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     return 44;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 25;
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
@@ -339,7 +344,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
         NSString *imgstr = [BaseURL stringByAppendingString:[imageURLs objectAtIndex:i]];
         NSURL *imgurl = [[NSURL alloc] initWithString:imgstr];
         UIImageView *imgview =[imageViews objectAtIndex:i];
-        [imgview setImageWithURL:imgurl];
+        [imgview setImageWithURL:imgurl placeholderImage:[UIImage imageNamed:@"loading.png"]];
         imgview.hidden = NO;
         
     }

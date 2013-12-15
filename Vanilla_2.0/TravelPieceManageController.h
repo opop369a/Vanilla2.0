@@ -25,6 +25,8 @@
     NSString * user_spot;
     SpotAnnotation *user_current_annotation;
     
+    bool isShowMe;
+    
 }
 
 @property(nonatomic, assign) NSInteger tid;

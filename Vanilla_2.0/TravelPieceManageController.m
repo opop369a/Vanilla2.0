@@ -38,8 +38,15 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    isShowMe = false;
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0 , 0, 330, 250)];
+   
+    //开始定位
+    //[self startUpdates];
+    
     _mapView.delegate = self;
+    
     [_mapView setShowsUserLocation:TRUE];
     
     travelItems = [[NSMutableArray alloc] initWithCapacity:20];
@@ -111,6 +118,21 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     }];
 }
 
+- (void)deletePieceFromServer:(NSInteger)pid
+{
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:BaseURL]];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSNumber *o_pid = [[NSNumber alloc] initWithInteger:pid];
+    NSDictionary *parameters = @{@"pid":o_pid};
+    [manager POST:@"deletePiece.php" parameters:parameters success:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSLog(@"%@", [operation responseString]);
+         
+     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -139,7 +161,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
         if ([item.imageURLs count]>0) {
             NSString *imgstr = [BaseURL stringByAppendingString:[item.imageURLs objectAtIndex:0]];
             NSURL *imgurl = [[NSURL alloc] initWithString:imgstr];
-            [imageView setImageWithURL:imgurl];
+            [imageView setImageWithURL:imgurl placeholderImage:[UIImage imageNamed:@"loading.png"]];
         }else{
             imageView.image = nil;
         }
@@ -177,6 +199,10 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+        TravelItem *itemTodelete = [travelItems objectAtIndex:indexPath.row-1];
+        NSInteger pid = itemTodelete.pid;
+        [self deletePieceFromServer:pid];
+    
         [travelItems removeObjectAtIndex:indexPath.row-1];
         NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
         [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -199,6 +225,7 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    if (!isShowMe) {
     user_location =[mapView userLocation].location.coordinate;
     MKCoordinateRegion region = [mapView region];
     region.center = user_location;
@@ -216,6 +243,9 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     
     [self doRevGeocodeUsingLat:[mapView userLocation].location.coordinate.latitude andLng:[mapView userLocation].location.coordinate.longitude withAnnotation:user_current_annotation];
     [mapView addAnnotation:user_current_annotation];
+        
+    isShowMe = false;
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -257,9 +287,20 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     if (locationManager == nil)
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
+        locationManager.activityType = CLActivityTypeFitness;
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-        locationManager.distanceFilter = 10;
+        locationManager.distanceFilter = 100;
         [locationManager startUpdatingLocation];
+}
+
+#pragma location
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation * curLocation = [locations lastObject];
+    NSLog(@"lat:%f", curLocation.coordinate.latitude);
+    NSLog(@"lgn:%f", curLocation.coordinate.longitude);
+    
 }
 
 - (void)addAnnotations
