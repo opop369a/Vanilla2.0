@@ -9,6 +9,8 @@
 #import "TravelManageViewController.h"
 #import "addTravelViewController.h"
 #import "TravelPieceManageController.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @interface TravelManageViewController ()
 {
@@ -19,6 +21,7 @@
 @implementation TravelManageViewController
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
+static NSString *const baseUrl =@"http://localhost/~BAO/";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,28 +37,48 @@ static CGFloat ImageHeight  = 300.0;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     //获取数据
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"username": @"tangwei"};
+    [manager POST:[baseUrl stringByAppendingString:@"travelsinfo.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        NSArray *array = [dic objectForKey:@"travels"];
+        self.content = [[NSMutableArray alloc] initWithCapacity:3];
+        [self.content addObjectsFromArray:array];
+        NSLog(@"%lu" , (unsigned long)self.content.count);
+        [_tableView reloadData];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    
     NSString *headName=@"北京";
-    if (self.content == nil) {
-    self.content = [[NSMutableArray alloc]initWithCapacity:3 ];
-    //加载表格数据
-    NSMutableDictionary *three_turple = [[NSMutableDictionary alloc]initWithCapacity:3];
-    [three_turple setObject:@"我的丽江之行" forKey:@"mainTitleKey"  ];
-    [three_turple setObject:@"这次十一去丽江给人很大启发" forKey:@"secondaryTitleKey"];
-    [three_turple setObject:@"丽江" forKey:@"imageKey"];
-    [self.content addObject:three_turple];
-    three_turple = [[NSMutableDictionary alloc]initWithCapacity:3];
-    [three_turple setObject:@"我的北京之行" forKey:@"mainTitleKey"  ];
-    [three_turple setObject:@"这次十一去北京给人很大启发" forKey:@"secondaryTitleKey"];
-    [three_turple setObject:@"北京" forKey:@"imageKey"];
-    [self.content addObject:three_turple];
-    three_turple = [[NSMutableDictionary alloc]initWithCapacity:3];
-    [three_turple setObject:@"我的西藏之行" forKey:@"mainTitleKey"  ];
-    [three_turple setObject:@"这次十一去西藏给人很大启发" forKey:@"secondaryTitleKey"];
-    [three_turple setObject:@"西藏" forKey:@"imageKey"];
-    [self.content addObject:three_turple];
-
-    }
-
+    
+//    if (self.content == nil) {
+//        self.content = [[NSMutableArray alloc]initWithCapacity:3 ];
+//        //加载表格数据
+//        NSMutableDictionary *three_turple = [[NSMutableDictionary alloc]initWithCapacity:3];
+//        [three_turple setObject:@"我的丽江之行" forKey:@"mainTitleKey"  ];
+//        [three_turple setObject:@"这次十一去丽江给人很大启发" forKey:@"secondaryTitleKey"];
+//        [three_turple setObject:@"丽江" forKey:@"imageKey"];
+//        [self.content addObject:three_turple];
+//        three_turple = [[NSMutableDictionary alloc]initWithCapacity:3];
+//        [three_turple setObject:@"我的北京之行" forKey:@"mainTitleKey"  ];
+//        [three_turple setObject:@"这次十一去北京给人很大启发" forKey:@"secondaryTitleKey"];
+//        [three_turple setObject:@"北京" forKey:@"imageKey"];
+//        [self.content addObject:three_turple];
+//        three_turple = [[NSMutableDictionary alloc]initWithCapacity:3];
+//        [three_turple setObject:@"我的西藏之行" forKey:@"mainTitleKey"  ];
+//        [three_turple setObject:@"这次十一去西藏给人很大启发" forKey:@"secondaryTitleKey"];
+//        [three_turple setObject:@"西藏" forKey:@"imageKey"];
+//        [self.content addObject:three_turple];
+//        
+//    }
     
     _imageScroller  = [[UIScrollView alloc] initWithFrame:CGRectZero];
     _imageScroller.backgroundColor                  = [UIColor clearColor];
@@ -170,10 +193,12 @@ static CGFloat ImageHeight  = 300.0;
     NSDictionary *item = (NSDictionary *)[self.content objectAtIndex:indexPath.row];
     cell.textLabel.text = [item objectForKey:@"mainTitleKey"];
     cell.detailTextLabel.text = [item objectForKey:@"secondaryTitleKey"];
-    NSString *path = [[NSBundle mainBundle] pathForResource:[item objectForKey:@"imageKey"] ofType:@"png"];
-    UIImage *theImage = [UIImage imageWithContentsOfFile:path];
-    
-    cell.imageView.image = theImage;
+    [cell.imageView setFrame:CGRectMake(0.0f, 0.0f, 80.0f, 100.0f)];
+    [cell.imageView setCenter:CGPointMake(40.0f, 50.0f)];
+    [cell.imageView setImageWithURL:
+     [NSURL URLWithString:[@"http://172.17.178.95/vanilla/" stringByAppendingString:[item objectForKey:@"imageKey"]]] placeholderImage:[UIImage imageNamed:@"loading.png"]];
+    [cell setEditing:YES];
+//    cell.editingStyle = UITableViewCellEditingStyleDelete;
     return cell;
 }
 
@@ -215,20 +240,65 @@ static CGFloat ImageHeight  = 300.0;
 -(void) done:(NSDictionary *)dictionary
 {
     [self.content addObject:dictionary];
+    [_tableView reloadData];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return  NO;
+    }
+    return YES;
+}
+
+//定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView setEditing:YES animated:YES];
+    return UITableViewCellEditingStyleDelete;
+}
+
+//进入编辑模式，按下出现的编辑按钮后
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self deleteRecord: [[self.content objectAtIndex:indexPath.row] objectForKey:@"tid"]];
+    [self.content removeObjectAtIndex:indexPath.row];
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void) deleteRecord:(id)tid
+{
     
-    [super viewDidLoad];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"tid": [NSString stringWithFormat:@"%@" ,tid]};
+    NSLog(@"%@" , tid);
+    [manager POST:[baseUrl stringByAppendingString:@"deletetravel.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+-(void)addRecord:(NSDictionary*)record
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:[baseUrl stringByAppendingString:@"addtravel.php"] parameters:record success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        NSString*result = [dic objectForKey:@"result"];
+        if ([result isEqualToString:@"success"]) {
+            
+        }
+        else
+        {
+            NSLog(@"add failed !");
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
     
-    [_tableView removeFromSuperview];
-    _tableView = [[UITableView alloc] init];
-    _tableView.backgroundColor              = [UIColor clearColor];
-    _tableView.dataSource                   = self;
-    _tableView.delegate                     = self;
-    _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
-    _tableView.showsVerticalScrollIndicator = NO;
-    
-    [self.view addSubview:_imageScroller];
-    [self.view addSubview:_tableView];
-    [self.view setNeedsDisplay];
 }
 
 

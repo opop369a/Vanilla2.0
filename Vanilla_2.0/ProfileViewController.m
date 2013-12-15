@@ -11,10 +11,11 @@
 @implementation ProfileViewController
 {
     NSArray * first_deminsion;
+    NSArray * first_deminsion_detail;
 }
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
-
+static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
 #pragma mark - Parallax effect
 
 - (void)viewDidLoad
@@ -36,6 +37,54 @@ static CGFloat ImageHeight  = 300.0;
     NSArray *second_deminsion_one = [[NSArray alloc]initWithObjects:@"用户名"   ,@"简介" ,nil];
     NSArray *second_deminsion_two = [[NSArray alloc]initWithObjects:@"电子邮件"   ,@"地区" ,@"手机" ,nil];
     first_deminsion = [[NSArray alloc] initWithObjects:second_deminsion_one,second_deminsion_two, nil];
+    
+//    NSString *TargetUrl = @"user.json";
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"username": @"tangwei"};
+    [manager POST:[baseUrl stringByAppendingString:@"userinfo.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        NSDictionary *resDic = [dic objectForKey:@"user"];
+        
+        NSArray *second_deminsion_detail_one = [[NSArray alloc]initWithObjects:[resDic objectForKey:@"username"]   ,[resDic objectForKey:@"brief"] ,nil];
+        NSArray *second_deminsion_detail_two = [[NSArray alloc]initWithObjects:[resDic objectForKey:@"email"]  ,[resDic objectForKey:@"place"] ,[resDic objectForKey:@"phone"] ,nil];
+        
+        first_deminsion_detail= [[NSArray alloc] initWithObjects:second_deminsion_detail_one,second_deminsion_detail_two, nil];
+        [_tableView reloadData];
+
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [baseUrl stringByAppendingString:TargetUrl]]];
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+//        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+//        //系统自带JSON解析
+//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+//        NSDictionary *resDic = [dic objectForKey:@"user"];
+//        NSLog(@"%@", resDic);
+//        
+//        NSArray *second_deminsion_detail_one = [[NSArray alloc]initWithObjects:[resDic objectForKey:@"username"]   ,[resDic objectForKey:@"brief"] ,nil];
+//        NSArray *second_deminsion_detail_two = [[NSArray alloc]initWithObjects:[resDic objectForKey:@"email"]  ,[resDic objectForKey:@"place"] ,[resDic objectForKey:@"phone"] ,nil];
+//        first_deminsion_detail= [[NSArray alloc] initWithObjects:second_deminsion_detail_one,second_deminsion_detail_two, nil];
+//        NSLog(@"%@", first_deminsion_detail);
+//        [_tableView reloadData];
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Failure: %@", error);
+//    }];
+//    [operation start];
+    
+    
+    
+    
+    
     
     self.headUrl = @"头像.png";
     
@@ -150,14 +199,16 @@ static CGFloat ImageHeight  = 300.0;
     else if (indexPath.section < 3) {
         
         cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+        cell.detailTextLabel.text= [[first_deminsion_detail objectAtIndex:indexPath.section-1] objectAtIndex:indexPath.row];
         if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellReuseIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleDefault;
             cell.textLabel.text =[[ first_deminsion objectAtIndex:indexPath.section-1] objectAtIndex:indexPath.row];
+            NSLog(@"%@" , cell.detailTextLabel.text);
             return cell;
         }
         
-        }
+    }
     else if (indexPath.section == 3 ) {
         cell = [tableView dequeueReusableCellWithIdentifier:supportCellIdentifier];
         if (!cell) {
@@ -170,7 +221,7 @@ static CGFloat ImageHeight  = 300.0;
         
     }else
         return cell;
-                // Configure the cell...
+    // Configure the cell...
     return cell;
 }
 
@@ -215,18 +266,6 @@ static CGFloat ImageHeight  = 300.0;
 
 #pragma mark - Dealloc
 
-
--(UITableViewCell*) getUserInfoCell:(NSString *)identifier
-{
-    UITableViewCell * cell =[_tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (cell == Nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = identifier;
-    }
-    return cell;
-}
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {

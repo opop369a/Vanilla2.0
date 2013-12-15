@@ -54,7 +54,7 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:3];
     [dic setObject:self.nameTextField.text forKey:@"mainTitleKey"];
     [dic setObject:self.ideasTextView.text forKey:@"secondaryTitleKey"];
-    [dic setObject:@"北京" forKey:@"imageKey"];
+    [dic setObject:@"default.png" forKey:@"imageKey"];
 
     if (!_delegate) {
         NSLog(@"no delegate");

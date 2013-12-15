@@ -25,6 +25,8 @@
 		39E9F39F185BF2C500784C12 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 39E9F39C185BF2C500784C12 /* box.png */; };
 		39E9F3A0185BF2C500784C12 /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 39E9F39D185BF2C500784C12 /* Home.png */; };
 		39E9F3A1185BF2C500784C12 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 39E9F39E185BF2C500784C12 /* user.png */; };
+		39E9F3A3185D360200784C12 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 39E9F3A2185D360200784C12 /* loading.png */; };
+		39E9F3A5185D379700784C12 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 39E9F3A4185D379700784C12 /* default.png */; };
 		8A23E26D185A0FEC00945CD0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E26C185A0FEC00945CD0 /* MainViewController.m */; };
 		8A23E270185A101800945CD0 /* TravelManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E26F185A101800945CD0 /* TravelManageViewController.m */; };
 		8A23E273185A14A700945CD0 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E272185A14A700945CD0 /* ProfileViewController.m */; };
@@ -92,6 +94,8 @@
 		39E9F39C185BF2C500784C12 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		39E9F39D185BF2C500784C12 /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
 		39E9F39E185BF2C500784C12 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		39E9F3A2185D360200784C12 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
+		39E9F3A4185D379700784C12 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		8A23E26B185A0FEC00945CD0 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8A23E26C185A0FEC00945CD0 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8A23E26E185A101800945CD0 /* TravelManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelManageViewController.h; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 		8A3440C61853645800E3B481 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				39E9F3A4185D379700784C12 /* default.png */,
+				39E9F3A2185D360200784C12 /* loading.png */,
 				39E9F39C185BF2C500784C12 /* box.png */,
 				39E9F39D185BF2C500784C12 /* Home.png */,
 				39E9F39E185BF2C500784C12 /* user.png */,
@@ -392,8 +398,10 @@
 				39AA104F185307C5004D8A44 /* Images.xcassets in Resources */,
 				8A23E28B185A15A200945CD0 /* userInfo.plist in Resources */,
 				39E9F3A1185BF2C500784C12 /* user.png in Resources */,
+				39E9F3A5185D379700784C12 /* default.png in Resources */,
 				8A3440D2185364CC00E3B481 /* e.jpg in Resources */,
 				8A23E28A185A15A200945CD0 /* RecentTravelPlist.plist in Resources */,
+				39E9F3A3185D360200784C12 /* loading.png in Resources */,
 				39AA1041185307C5004D8A44 /* InfoPlist.strings in Resources */,
 				8A23E287185A156C00945CD0 /* 西藏.png in Resources */,
 				8A3440D1185364CC00E3B481 /* d.jpg in Resources */,

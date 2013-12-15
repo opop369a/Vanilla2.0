@@ -21,6 +21,7 @@
 
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
+static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,6 +45,27 @@ static CGFloat ImageHeight  = 300.0;
     
     //加载表格数据
     if (self.haveTravels) {
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *parameters = @{@"username": @"tangwei"};
+        [manager POST:[baseUrl stringByAppendingString:@"travelsinfo.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            
+            NSString *requestTmp = [NSString stringWithString:operation.responseString];
+            NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+            NSArray *array = [dic objectForKey:@"travels"];
+            self.content = [[NSMutableArray alloc] initWithCapacity:3];
+            [self.content addObjectsFromArray:array];
+            NSLog(@"%lu" , (unsigned long)self.content.count);
+            [_tableView reloadData];
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+
+        
         NSBundle *bundle = [NSBundle mainBundle];
         NSURL *plistURL = [bundle URLForResource:@"RecentTravelPlist" withExtension:@"plist"];
         self.content= [[NSArray arrayWithContentsOfURL:plistURL] mutableCopy];
