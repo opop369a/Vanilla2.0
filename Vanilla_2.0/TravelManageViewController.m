@@ -13,9 +13,7 @@
 
 
 @interface TravelManageViewController ()
-{
-        addTravelViewController* addViewController ;
-}
+
 @end
 
 @implementation TravelManageViewController
@@ -227,11 +225,11 @@ static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"addTravel"]) {
     UINavigationController *nav = segue.destinationViewController;
-    addViewController = [nav.viewControllers objectAtIndex:0];
+    addTravelViewController* addViewController = [nav.viewControllers objectAtIndex:0];
     addViewController.delegate = self; 
     }else if([segue.identifier isEqualToString:@"travelPiece"]){
-    //    TravelPieceManageController *mcontroller = segue.destinationViewController;
-    
+    TravelPieceManageController *mcontroller = segue.destinationViewController;
+        mcontroller.tid = [(NSDictionary*)sender objectForKey:@"tid"];
     }
     
 }
