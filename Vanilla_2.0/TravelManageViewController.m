@@ -13,15 +13,14 @@
 
 
 @interface TravelManageViewController ()
-{
-        addTravelViewController* addViewController ;
-}
+
 @end
 
 @implementation TravelManageViewController
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
 static NSString *const baseUrl =@"http://localhost/~BAO/";
+static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -193,10 +192,8 @@ static NSString *const baseUrl =@"http://localhost/~BAO/";
     NSDictionary *item = (NSDictionary *)[self.content objectAtIndex:indexPath.row];
     cell.textLabel.text = [item objectForKey:@"mainTitleKey"];
     cell.detailTextLabel.text = [item objectForKey:@"secondaryTitleKey"];
-    [cell.imageView setFrame:CGRectMake(0.0f, 0.0f, 80.0f, 100.0f)];
-    [cell.imageView setCenter:CGPointMake(40.0f, 50.0f)];
     [cell.imageView setImageWithURL:
-     [NSURL URLWithString:[@"http://172.17.178.95/vanilla/" stringByAppendingString:[item objectForKey:@"imageKey"]]] placeholderImage:[UIImage imageNamed:@"loading.png"]];
+     [NSURL URLWithString:[baseImageUrl stringByAppendingString:[item objectForKey:@"imageKey"]]] placeholderImage:[UIImage imageNamed:@"loading.png"]];
     [cell setEditing:YES];
 //    cell.editingStyle = UITableViewCellEditingStyleDelete;
     return cell;
@@ -228,17 +225,18 @@ static NSString *const baseUrl =@"http://localhost/~BAO/";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"addTravel"]) {
     UINavigationController *nav = segue.destinationViewController;
-    addViewController = [nav.viewControllers objectAtIndex:0];
+    addTravelViewController* addViewController = [nav.viewControllers objectAtIndex:0];
     addViewController.delegate = self; 
     }else if([segue.identifier isEqualToString:@"travelPiece"]){
-    //    TravelPieceManageController *mcontroller = segue.destinationViewController;
-    
+    TravelPieceManageController *mcontroller = segue.destinationViewController;
+        mcontroller.tid = [(NSDictionary*)sender objectForKey:@"tid"];
     }
     
 }
 
--(void) done:(NSDictionary *)dictionary
+-(void) done:(NSMutableDictionary *)dictionary
 {
+    [self addRecord:dictionary];
     [self.content addObject:dictionary];
     [_tableView reloadData];
 }
@@ -279,8 +277,9 @@ static NSString *const baseUrl =@"http://localhost/~BAO/";
     }];
 }
 
--(void)addRecord:(NSDictionary*)record
+-(void)addRecord:(NSMutableDictionary*)record
 {
+    NSLog(@"%@" , record);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:[baseUrl stringByAppendingString:@"addtravel.php"] parameters:record success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -289,7 +288,8 @@ static NSString *const baseUrl =@"http://localhost/~BAO/";
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
         NSString*result = [dic objectForKey:@"result"];
         if ([result isEqualToString:@"success"]) {
-            
+            NSString*tid = [dic objectForKey:@"tid"];
+            [record setObject:tid forKey:@"tid"];
         }
         else
         {
@@ -298,7 +298,6 @@ static NSString *const baseUrl =@"http://localhost/~BAO/";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
 }
 
 
