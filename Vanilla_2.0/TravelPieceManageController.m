@@ -51,7 +51,6 @@ static NSString * const BaseURL = @"http://172.17.228.37/~ClarkWong/vanilla/";
     
     travelItems = [[NSMutableArray alloc] initWithCapacity:20];
     itemAnnotations = [[NSMutableArray alloc] initWithCapacity:20];
-    tid = 1;
     
     [self getPiecesFromServer:tid];
     
