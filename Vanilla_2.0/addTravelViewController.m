@@ -54,6 +54,9 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:3];
     [dic setObject:self.nameTextField.text forKey:@"mainTitleKey"];
     [dic setObject:self.ideasTextView.text forKey:@"secondaryTitleKey"];
+    [dic setObject:self.persons.text forKey:@"persons"];
+    [dic setObject:self.place.text forKey:@"sceneryname"];
+    [dic setObject:[NSString stringWithFormat:@"%d" ,1] forKey:@"uid"];
     [dic setObject:@"default.png" forKey:@"imageKey"];
 
     if (!_delegate) {

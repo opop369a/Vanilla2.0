@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "addTravelViewController.h"
 #import "TravelManageViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MainViewController ()
 
@@ -22,6 +23,7 @@
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 300.0;
 static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
+static NSString *const baseImageUrl =@"http://172.17.228.37/vanilla/";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,34 +44,35 @@ static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
     
     //加载视图数据
     self.haveTravels = NO;
+//
+//    //加载表格数据
+//    if (self.haveTravels) {
     
-    //加载表格数据
-    if (self.haveTravels) {
-        
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSDictionary *parameters = @{@"username": @"tangwei"};
-        [manager POST:[baseUrl stringByAppendingString:@"travelsinfo.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST:[baseUrl stringByAppendingString:@"recenttravels.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
             
             NSString *requestTmp = [NSString stringWithString:operation.responseString];
             NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
             NSArray *array = [dic objectForKey:@"travels"];
-            self.content = [[NSMutableArray alloc] initWithCapacity:3];
-            [self.content addObjectsFromArray:array];
-            NSLog(@"%lu" , (unsigned long)self.content.count);
-            [_tableView reloadData];
+//            [self.content addObjectsFromArray:array];
+            self.content = [array mutableCopy];
+//            self.haveTravels = YES;
+//            [_tableView reloadData];
             
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
+//            self.haveTravels =NO;
         }];
 
         
-        NSBundle *bundle = [NSBundle mainBundle];
-        NSURL *plistURL = [bundle URLForResource:@"RecentTravelPlist" withExtension:@"plist"];
-        self.content= [[NSArray arrayWithContentsOfURL:plistURL] mutableCopy];
-    }
+//        NSBundle *bundle = [NSBundle mainBundle];
+//        NSURL *plistURL = [bundle URLForResource:@"RecentTravelPlist" withExtension:@"plist"];
+//        self.content= [[NSArray arrayWithContentsOfURL:plistURL] mutableCopy];
+//    }
     _imageScroller  = [[UIScrollView alloc] initWithFrame:CGRectZero];
     _imageScroller.backgroundColor                  = [UIColor clearColor];
     _imageScroller.showsHorizontalScrollIndicator   = NO;
@@ -164,7 +167,7 @@ static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellReuseIdentifier   = @"RBParallaxTableViewCell";
     static NSString *windowReuseIdentifier = @"RBParallaxTableViewWindow";
-    
+    NSLog(@"%@" , indexPath);
     UITableViewCell *cell = nil;
     
     if (indexPath.section == 0) {
@@ -177,7 +180,69 @@ static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
             cell.selectionStyle              = UITableViewCellSelectionStyleNone;
             return cell;
         }
-    } else if(!_haveTravels && indexPath.section == 1 && indexPath.row ==0 ) {
+    }
+    
+    if (!_haveTravels) {
+        if (indexPath.section == 1 && indexPath.row ==0) {
+            cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellReuseIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20.0f, 0.0f, 280.0f, 60.0f)];
+                label.text = @"有多久没去旅行了?";
+                [cell.contentView addSubview:label ];
+            }
+            return cell;
+        }else if (indexPath.section == 1 && indexPath.row ==1)
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellReuseIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 280.0f, 60.0f)];
+                button.backgroundColor = [[UIColor alloc] initWithRed:(CGFloat)209/255 green:(CGFloat)112/255 blue:(CGFloat)95/255 alpha:1];
+                [button.titleLabel setTextColor:[UIColor whiteColor]];
+                [button setTitle:@"开始新旅行" forState:UIControlStateNormal];
+                [button showsTouchWhenHighlighted];
+                [cell.contentView addSubview:button ];
+                [button setEnabled:YES];
+                [button addTarget:self action:@selector(goStart) forControlEvents:UIControlEventTouchDown];
+            }
+            return cell;
+        }
+        else
+        {
+            
+            if (indexPath.section == 1) {
+                cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+                if (!cell) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
+                    cell.textLabel.text = @"最近的旅行";
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                }
+                return cell;
+            }
+            
+            //获取recent travel数据
+            cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellReuseIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+                NSDictionary *item = (NSDictionary *)[self.content objectAtIndex:indexPath.row];
+                cell.textLabel.text = [item objectForKey:@"mainTitleKey"];
+                cell.detailTextLabel.text = [item objectForKey:@"secondaryTitleKey"];
+                [cell.imageView setImageWithURL:
+                 [NSURL URLWithString:[baseImageUrl stringByAppendingString:[item objectForKey:@"imageKey"]]] placeholderImage:[UIImage imageNamed:@"loading.png"]];
+            }
+            return  cell;
+
+        }
+        
+    }
+    /*
+    else if(!_haveTravels && indexPath.section == 1 && indexPath.row ==0 ) {
         cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellReuseIdentifier];
@@ -224,15 +289,21 @@ static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
             NSDictionary *item = (NSDictionary *)[self.content objectAtIndex:indexPath.row];
             cell.textLabel.text = [item objectForKey:@"mainTitleKey"];
             cell.detailTextLabel.text = [item objectForKey:@"secondaryTitleKey"];
-            //    cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"imageKey"]];
-            NSString *path = [[NSBundle mainBundle] pathForResource:[item objectForKey:@"imageKey"] ofType:@"png"];
-            UIImage *theImage = [UIImage imageWithContentsOfFile:path];
-            cell.imageView.image = theImage;
+            [cell.imageView setImageWithURL:
+             [NSURL URLWithString:[@"http://172.17.178.95/vanilla/" stringByAppendingString:[item objectForKey:@"imageKey"]]] placeholderImage:[UIImage imageNamed:@"loading.png"]];
             return cell;
         }
+     
+     
         
-    }
+    } */
     
+    cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellReuseIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+        
     return cell;
 }
 
@@ -274,32 +345,56 @@ static NSString *const baseUrl =@"http://172.17.178.95/~BAO/";
     [self.navigationController presentViewController:add animated:YES completion:nil];
 }
 
--(void) done:(NSDictionary *)dictionary
+-(void) done:(NSMutableDictionary *)dictionary
 {
-    [self.content addObject:dictionary];
-    
-    [_imageScroller removeFromSuperview];
-    [_tableView removeFromSuperview];
-    _haveTravels = YES;
-    _imageScroller  = [[UIScrollView alloc] initWithFrame:CGRectZero];
-    _imageScroller.backgroundColor                  = [UIColor clearColor];
-    _imageScroller.showsHorizontalScrollIndicator   = NO;
-    _imageScroller.showsVerticalScrollIndicator     = NO;
-    
-    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"丽江.png"]];
-    [_imageScroller addSubview:_imageView];
-    
-    _tableView = [[UITableView alloc] init];
-    _tableView.backgroundColor              = [UIColor clearColor];
-    _tableView.dataSource                   = self;
-    _tableView.delegate                     = self;
-    _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
-    _tableView.showsVerticalScrollIndicator = NO;
-    
-    
-    [self.view addSubview:_imageScroller];
-    [self.view addSubview:_tableView];
+    [self addRecord:dictionary];
+//    [self.content addObject:dictionary];
+//
+//    [_imageScroller removeFromSuperview];
+//    [_tableView removeFromSuperview];
+//    _haveTravels = YES;
+//    _imageScroller  = [[UIScrollView alloc] initWithFrame:CGRectZero];
+//    _imageScroller.backgroundColor                  = [UIColor clearColor];
+//    _imageScroller.showsHorizontalScrollIndicator   = NO;
+//    _imageScroller.showsVerticalScrollIndicator     = NO;
+//    
+//    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"丽江.png"]];
+//    [_imageScroller addSubview:_imageView];
+//    
+//    _tableView = [[UITableView alloc] init];
+//    _tableView.backgroundColor              = [UIColor clearColor];
+//    _tableView.dataSource                   = self;
+//    _tableView.delegate                     = self;
+//    _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
+//    _tableView.showsVerticalScrollIndicator = NO;
+//    
+//    
+//    [self.view addSubview:_imageScroller];
+//    [self.view addSubview:_tableView];
 
+}
+
+-(void)addRecord:(NSMutableDictionary*)record
+{
+    NSLog(@"%@" , record);
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:[baseUrl stringByAppendingString:@"addtravel.php"] parameters:record success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        NSString*result = [dic objectForKey:@"result"];
+        if ([result isEqualToString:@"success"]) {
+            NSString*tid = [dic objectForKey:@"tid"];
+            [record setObject:tid forKey:@"tid"];
+        }
+        else
+        {
+            NSLog(@"add failed !");
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 
